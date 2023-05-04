@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <style>
+.gradient-custom-2 {
+	/* fallback for old browsers */
+	background: #fccb90;
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media ( min-width : 768px) {
+	.gradient-form {
+		height: 100vh !important;
+	}
+}
+
+@media ( min-width : 769px) {
+	.gradient-custom-2 {
+		border-top-right-radius: .3rem;
+		border-bottom-right-radius: .3rem;
+	}
+}
+</style>
+<link rel="stylesheet" href="css/bootstrap-login-form.min.css" />
+</head>
+<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="/"> 
+			    <img alt="" src="images/AshokIT-Logo.jpg"></a>
+			    
+			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			      				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Services</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Courses</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Contact
+							us</a></li>
+				</ul>
+			    </div>
+			  </div>
+		</nav>
+			<section class="h-100 gradient-form" style="background-color: #eee;">
+		<div class="container py-5 h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-xl-10">
+					<div class="card rounded-3 text-black">
+						<div class="row g-0">
+							<div class="col-lg-6">
+								<div class="card-body p-md-5 mx-md-4">
+
+									<div class="text-center">
+										<img src="images/AshokIT-Logo.jpg" style="width: 185px;"
+											alt="logo">
+										<h4 class="mt-1 mb-5 pb-1">Unlock your account here</h4>
+									</div>
+									
+									<p th:text="${succmsg}" class="text-success" />
+									<p th:text="${errmsg}" class="text-danger" />
+
+									<form th:action="@{/unlock}" th:object="${unlock}" method="post">
+
+										<div class="form-outline mb-6">
+											<h6> your Email : <p th:text="${unlock.email}" /></h6>
+											<input type="hidden" th:field="${unlock.email}"/>
+										</div>
+
+										<div class="form-outline mb-4">
+											<input type="text" id="form2Example22"
+												class="form-control" th:field="*{tempPassword}"/> <label class="form-label"
+												for="form2Example22">Temporary Password</label>
+										</div>
+
+										<div class="form-outline mb-4">
+											<input type="text" id="form2Example22"
+												class="form-control" th:field="*{newPassword}"/> <label class="form-label"
+												for="form2Example22">New Password</label>
+										</div>
+										
+										<div class="form-outline mb-4">
+											<input type="text" id="form2Example22"
+												class="form-control" th:field="*{confirmPassword}"/> <label class="form-label"
+												for="form2Example22">Confirm Password</label>
+										</div>
+
+										<div class="text-center d-grid gap-2">
+											<input type="submit" value="unlock"
+												class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">
+										</div>
+
+										<div
+											class="d-flex align-items-center justify-content-center pb-4">
+											<p class="mb-0 me-2">Already Unlocked?</p>
+											<a href="login" type="button" class="btn btn-outline-danger">Login
+												Here</a>
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+								<div class="text-white px-3 py-4 p-md-5 mx-md-4">
+									<h4 class="mb-4">Ashok IT is more than just a Software
+										Training Institute</h4>
+									<p class="small mb-0">Student Satisfaction is at most
+										important for us.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+		
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
